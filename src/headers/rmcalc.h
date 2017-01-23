@@ -14,10 +14,10 @@
 
 /* Given two roman numerals, rm_add() adds them and returns the answer in numeric format.  
    Returning char* avoids integer overflows. */ 
-rm_result rm_add(char* first, char* second);
+struct rm_result* rm_add(char* first, char* second);
 
 /* rm_sub() returns rm_result that holds absolute difference of two numbers
     or error description with code.*/
-rm_result rm_sub(char* first, char* second);
+struct rm_result* rm_sub(char* first, char* second);
 
 #endif
