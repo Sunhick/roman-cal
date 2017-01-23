@@ -7,3 +7,12 @@
  */
 
 #include <check.h>
+
+START_TEST (test0) {
+  /* unit test code */
+}
+END_TEST
+
+int main(void) {
+    return 0;
+}
