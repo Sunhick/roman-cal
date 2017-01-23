@@ -7,6 +7,7 @@
  */
 
 #include <check.h>
+#include <stdio.h>
 
 START_TEST (test0) {
   /* unit test code */
@@ -14,5 +15,6 @@ START_TEST (test0) {
 END_TEST
 
 int main(void) {
+    printf("Running test cases....\n");
     return 0;
 }

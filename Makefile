@@ -29,8 +29,8 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 all: $(OBJ)
 	ar rcs librc.a $<
 
-
 test:
+	gcc tests/check_add.c -o obj/tcases -L. -lrc
 
 run:
 
@@ -43,4 +43,4 @@ tags:
 
 .PHONY: clean
 clean:
-	rm -f $(ODIR)/*.o *~ $(IDIR)/*~
+	rm -f $(ODIR)/*.o *~ $(IDIR)/*~ obj/tcases
