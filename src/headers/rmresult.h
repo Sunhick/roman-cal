@@ -9,10 +9,9 @@
 #ifndef RM_RESULT_H
 #define RM_RESULT_H
 
-#define INVALID_ROMAN       500
-#define ERR_ADD             600
-#define ERR_SUB             700
-#define NO_ERR              999
+#define INVALID_ROMAN       0xE77
+#define NO_ERR              0x099
+#define ERR                 0xBAD
 
 /* defines the rm_result structure */
 struct rm_result {
