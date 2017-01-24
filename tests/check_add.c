@@ -10,30 +10,34 @@
 #include <stddef.h>
 #include <stdio.h>
 
-#include "headers/rmcalc.h"
+#include "tests.h"
 
 START_TEST (test0) {
-    verify("I", "V", "VI");
-    verify("I", "IV", "V");
-    verify("I", "", "I");
+    CHECK_ADD("I", "V", "VI");
+    CHECK_ADD("I", "IV", "V");
+    CHECK_ADD("I", "", "I");
 }
 END_TEST
 
 START_TEST (test1) {
-    verify("I", "V", "VI");
-    verify("I", "IV", "V");
-    verify("I", "", "I");
+    CHECK_ADD("I", "V", "VI");
+    CHECK_ADD("I", "IV", "V");
+    CHECK_ADD("I", "", "I");
 }
 END_TEST
 
 START_TEST (test2) {
-    verify("I", "V", "VI");
-    verify("I", "IV", "V");
-    verify("I", "", "I");
+    CHECK_ADD("I", "V", "VI");
+    CHECK_ADD("I", "IV", "V");
+    CHECK_ADD("I", "", "I");
 }
 END_TEST
 
 
 TCase* tc_adds() {
-    return NULL;
+    TCase *addtc = tcase_create("rm-add");
+    tcase_add_test(addtc, test0);
+    tcase_add_test(addtc, test1);
+    tcase_add_test(addtc, test2);
+    return addtc;
 }

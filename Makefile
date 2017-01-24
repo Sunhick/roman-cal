@@ -30,7 +30,7 @@ all: $(OBJ)
 	ar rcs librc.a $<
 
 test:
-	gcc tests/check_add.c -o obj/tcases -L. -lrc
+	gcc tests/runtests.c tests/tests.c tests/check_sub.c tests/check_add.c -o obj/tcases $(CFLAGS) -L. -lrc -lcheck
 
 run:
 
@@ -43,4 +43,4 @@ tags:
 
 .PHONY: clean
 clean:
-	rm -f $(ODIR)/*.o *~ $(IDIR)/*~ obj/tcases
+	rm -f $(ODIR)/*.o *~ $(IDIR)*~ obj/tcases librc.a

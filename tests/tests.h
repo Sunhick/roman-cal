@@ -11,16 +11,22 @@
 
 #include <check.h>
 
-#include "headers/rmresult.h"
+#include "rmcalc.h"
+#include "rmresult.h"
 
-void verify(char* first, char* second, char* expected) {
-    struct rm_result* result = rm_add(first, second);
-    ck_assert_msg( strcmp(expected, result->value) == 0,
-        "%s + %s = %s, but got %s", first, second, expected, actual);
-    free(result);
+typedef struct rm_result*(rm_func)(char*, char*);
+
+#define CHECK_ADD(first, second, expectation) {     \
+    verify(rm_add, first, second, expectation, '+');     \
 }
 
-extern TCase *tc_adds();
-extern TCase *tc_subs();
+#define CHECK_SUB(first, second, expectation) {     \
+    verify(rm_sub, first, second, expectation, '-');     \
+}
+
+extern void verify(rm_func func, char* first, char* second, \
+    char* expected, char opr);
+extern TCase* tc_adds();
+extern TCase* tc_subs();
 
 #endif
