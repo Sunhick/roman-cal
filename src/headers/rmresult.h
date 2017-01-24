@@ -12,10 +12,11 @@
 #define INVALID_ROMAN       500
 #define ERR_ADD             600
 #define ERR_SUB             700
+#define NO_ERR              999
 
 /* defines the rm_result structure */
 struct rm_result {
-    char* result;
+    char* value;
     char* err_message;
     int errcode;
 };

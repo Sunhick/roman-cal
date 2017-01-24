@@ -7,14 +7,33 @@
  */
 
 #include <check.h>
+#include <stddef.h>
 #include <stdio.h>
 
+#include "headers/rmcalc.h"
+
 START_TEST (test0) {
-  /* unit test code */
+    verify("I", "V", "VI");
+    verify("I", "IV", "V");
+    verify("I", "", "I");
 }
 END_TEST
 
-int main(void) {
-    printf("Running test cases....\n");
-    return 0;
+START_TEST (test1) {
+    verify("I", "V", "VI");
+    verify("I", "IV", "V");
+    verify("I", "", "I");
+}
+END_TEST
+
+START_TEST (test2) {
+    verify("I", "V", "VI");
+    verify("I", "IV", "V");
+    verify("I", "", "I");
+}
+END_TEST
+
+
+TCase* tc_adds() {
+    return NULL;
 }

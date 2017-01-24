@@ -7,12 +7,13 @@
  */
 
 #include <check.h>
+#include <stddef.h>
 
 START_TEST (test0) {
   /* unit test code */
 }
 END_TEST
 
-int main(void) {
-    return 0;
+TCase* tc_subs() {
+    return NULL;
 }
