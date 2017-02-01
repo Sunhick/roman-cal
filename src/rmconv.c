@@ -56,8 +56,9 @@ char* add_ascii(char* first, char* second) {
     
     // add two because, +1 for addition and another +1 for null terminated string
     int res = 2 + (fn > sn ? fn : sn);
-    char* sum = malloc(sizeof(char)*res);
-
+    char* rsum = (char*)malloc(sizeof(char)*res);
+    char* sum = rsum;
+    
     // Null terminate the string
     *(sum+res-1) = '\0';
     sum = sum+(res-2);
@@ -69,16 +70,17 @@ char* add_ascii(char* first, char* second) {
         
         if(c <= 9) {
             // append zero
-            *sum-- = (char)(c+'0');
+            *sum = (char)(c+'0');
             carry = 0;
         } else {
             int r = c % 10;
             carry = (int)(c/10);
-            *sum-- = (char)(r+'0');
+            *sum = (char)(r+'0');
         }
         
         first++;
         second++;
+        if(*first || *second) sum--;
     }
     
     while(*first) {
@@ -123,10 +125,11 @@ char* add_ascii(char* first, char* second) {
         if(*second) sum--;
     }
     
-    char* carryFilled = sum;
-    if(*--carryFilled) {
-        *sum = (char)(carry+'0');
+    // fill the extra spaces with zeros
+    while(sum != rsum) {
+        *--sum = carry + '0';
     }
+    
     
     return sum;
 }
