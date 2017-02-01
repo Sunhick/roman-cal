@@ -7,6 +7,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "rmcalc.h"
 
@@ -16,7 +17,7 @@ int main() {
     scanf("%s", second);
 
     struct rm_result* res = rm_add(first, second);
-    if (res->errcode == NO_ERR) {
+    if (res->errcode == ERROR) {
         printf("Result = %s\n", res->value);
     } else {
         printf("ERR: %s\n", res->err_message);

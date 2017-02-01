@@ -18,7 +18,7 @@ CFLAGS = -I $(IDIR) -g
 LIBS =
 ODIR = obj
 LDIR =
-SRC = src/
+SRC = src
 
 _DEPS = rmcalc.h rmresult.h rmconv.h
 DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
@@ -28,6 +28,10 @@ OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: $(OBJ)
 	ar rcs librc.a ./obj/rmcalc.o ./obj/rmconv.o
+
+examples: examples/rmadd.c examples/rmsub.c
+	gcc -g examples/rmadd.c -L. -lrc -I ./src/headers/ -o obj/rmadd
+	gcc -g examples/rmsub.c -L. -lrc -I ./src/headers/ -o obj/rmsub
 
 test:
 	gcc tests/runtests.c tests/tests.c tests/check_sub.c tests/check_add.c -o obj/tcases $(CFLAGS) -L. -lrc -lcheck

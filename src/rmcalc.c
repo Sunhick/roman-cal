@@ -19,14 +19,14 @@ struct rm_result* rm_add(char* first, char* second) {
     
     char* fnumber = rm_conv_numeric(first);
     if(!fnumber) {
-        result->errcode = NO_ERR;
+        result->errcode = ERROR;
         result->err_message = "First number is invalid roman!";
         return result;
     }
 
     char* snumber = rm_conv_numeric(second);
     if(!snumber) {
-        result->errcode = NO_ERR;
+        result->errcode = ERROR;
         result->err_message = "Second number is invalid roman!";
         return result;
     }
