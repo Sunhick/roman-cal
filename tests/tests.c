@@ -27,3 +27,11 @@ void verify(rm_func func, char* first, char* second, \
     if (result) 
         free(result);
 }
+
+void __verify(addascii func, char* first, char* second, \
+    char* expected, char opr) {
+    char* val = func(first, second);
+    ck_assert_msg( strcmp(expected, val) == 0,
+        "%s %c %s = %s, but got %s", first, opr, second, expected, val);
+    free(val);
+}

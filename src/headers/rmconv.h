@@ -22,4 +22,6 @@ long long rm_conv_llong(char* roman);
     This returns ASCII numeric number. eg: "45667678" */
 char* rm_conv_numeric(char* roman);
 
+char* add_ascii(char* first, char* second);
+
 #endif

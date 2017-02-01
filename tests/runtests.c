@@ -13,8 +13,9 @@
 int main() {
     Suite *all = suite_create("rmcalc_tests");
     
-    suite_add_tcase(all, tc_adds());
-    suite_add_tcase(all, tc_subs());
+    suite_add_tcase(all, tc_adds_ascii());
+    // suite_add_tcase(all, tc_adds());
+    // suite_add_tcase(all, tc_subs());
     
     SRunner *runner = srunner_create(all);
     srunner_run_all(runner, CK_NORMAL);

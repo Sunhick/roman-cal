@@ -35,7 +35,7 @@ int convert(char c) {
     }
 }
 
-
+/* reverse the given string and return a the reference */
 char* strrev(const char *t) {
     int len = strlen(t);
     char* rev = (char*)malloc((len+1) * sizeof(char));
@@ -47,6 +47,7 @@ char* strrev(const char *t) {
     return rev;
 }
 
+/* Given two numbers as string add them and return sum as a string */
 char* add_ascii(char* first, char* second) {
     int fn = strlen(first);
     int sn = strlen(second);
