@@ -27,12 +27,13 @@ _OBJ = rmcalc.o rmconv.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 all: $(OBJ)
-	ar rcs librc.a $<
+	ar rcs librc.a ./obj/rmcalc.o ./obj/rmconv.o
 
 test:
 	gcc tests/runtests.c tests/tests.c tests/check_sub.c tests/check_add.c -o obj/tcases $(CFLAGS) -L. -lrc -lcheck
 
-run:
+run: test
+	obj/tcases
 
 $(ODIR)/%.o: $(SRC)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) $(LIBS)

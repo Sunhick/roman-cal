@@ -11,6 +11,7 @@
 
 #include <check.h>
 
+#include "rmconv.h"
 #include "rmcalc.h"
 
 typedef struct rm_result*(rm_func)(char*, char*);

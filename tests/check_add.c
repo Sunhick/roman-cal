@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdio.h>
 
+#include "rmconv.h"
 #include "tests.h"
 
 START_TEST (test0) {

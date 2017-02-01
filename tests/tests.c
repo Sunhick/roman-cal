@@ -7,6 +7,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "tests.h"
 
@@ -18,8 +19,9 @@ void verify(rm_func func, char* first, char* second, \
     char *val;
     if (result) {
         val = result->value;
+    } else {
+        printf("Error: %s", result->err_message);
     }
-
     ck_assert_msg( strcmp(expected, val) == 0,
         "%s %c %s = %s, but got %s", first, opr, second, expected, val);
     if (result) 

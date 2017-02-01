@@ -9,6 +9,7 @@
 #include <check.h>
 #include <stddef.h>
 
+#include "rmconv.h"
 #include "tests.h"
 
 START_TEST (test0) {
