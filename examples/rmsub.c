@@ -13,12 +13,15 @@
 
 int main() {
     char first[10], second[10];
+    printf("Enter first number:");
     scanf("%s", first);
+
+    printf("Enter second number:");
     scanf("%s", second);
 
     struct rm_result* res = rm_add(first, second);
     if (res->errcode == ERROR) {
-        printf("Result = %s\n", res->value);
+        printf("Difference = %s\n", res->value);
     } else {
         printf("ERR: %s\n", res->err_message);
     }
