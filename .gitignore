@@ -32,3 +32,6 @@ obj/*
 # Debug files
 *.dSYM/
 *.su
+
+# MacOS files
+.DS_Store
