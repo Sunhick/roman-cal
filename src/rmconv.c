@@ -12,7 +12,8 @@
 
 #include "headers/rmconv.h"
 
-#define INVALID  -999
+#define INVALID     -999
+#define CHR_LIMIT   10
 
 int convert(char c) {
     switch(c) {
@@ -120,7 +121,7 @@ char* add_ascii(char* first, char* second) {
                 *sum = (char)(r+'0');
             }
         } else {
-            *sum = *second++;
+            *sum = *second;
         }
         second++;
         if(*second) sum--;
@@ -137,28 +138,50 @@ char* add_ascii(char* first, char* second) {
 
 /* convert roman to integer */
 int rm_conv_int(char* roman) {
-    return 0;
+    return (int)(rm_conv_llong(roman));
 }
 
 /* convert roman to long */
 long rm_conv_long(char* roman) {
-    return 0L;
+    return (long)(rm_conv_llong(roman));
 }
 
 /* convert roman to long long */
 long long rm_conv_llong(char* roman) {
-    return 0L;
+    char* ptr = roman;
+    long long number  = 0L;
+    
+    while(*ptr) {
+        int cur = convert(*ptr);
+        int nxt = *(ptr+1) ? convert(*(ptr+1)) : 0;
+        
+        if(cur == INVALID) return INVALID;
+        if(nxt == INVALID) number += cur;
+        
+        if(cur >= nxt) {
+            number += cur;
+            ptr++;
+        } else {
+            number += (nxt - cur);
+            ptr += 2*sizeof(char);
+        }
+    }
+    return number;
 }
 
 /* Generic function: use only if the conversion results in a overflow exception.
     This returns ASCII numeric number. eg: "45667678" */
 char* rm_conv_numeric(char* roman) {
     char* ptr = roman;
+    char* number = (char*)malloc(sizeof(char) * CHR_LIMIT);
+
     while(*ptr) {
         int cur = convert(*ptr);
         int nxt = *(ptr+1) ? convert(*(ptr+1)) : 0;
 
-        if(cur == INVALID || nxt == INVALID) return NULL;
+        if(cur == INVALID) return NULL;
+
+        // if(nxt == INVALID) *number = 
 
         if(cur > nxt) {
             int ans = cur;

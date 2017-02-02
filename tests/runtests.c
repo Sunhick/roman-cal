@@ -13,7 +13,7 @@
 int main() {
     Suite *all = suite_create("rmcalc_tests");
     
-    suite_add_tcase(all, tc_adds_ascii());
+    suite_add_tcase(all, tc_utils());
     // suite_add_tcase(all, tc_adds());
     // suite_add_tcase(all, tc_subs());
     

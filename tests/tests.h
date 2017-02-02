@@ -14,29 +14,34 @@
 #include "rmconv.h"
 #include "rmcalc.h"
 
+/* shorthand function pointers */
 typedef struct rm_result*(rm_func)(char*, char*);
 typedef char*(addascii)(char*, char*);
+typedef long long (rmconv)(char*);
 
-#define CHECK_ADD(first, second, expectation) {          \
-    verify(rm_add, first, second, expectation, '+');     \
+#define CHECK_ADD(first, second, expectation) {                 \
+    verify(rm_add, first, second, expectation, '+');            \
 }
 
-#define CHECK_SUB(first, second, expectation) {          \
-    verify(rm_sub, first, second, expectation, '-');     \
+#define CHECK_SUB(first, second, expectation) {                 \
+    verify(rm_sub, first, second, expectation, '-');            \
 }
 
-#define CHECK_ADD_ASCII(first, second, expectation) {          \
-    __verify(add_ascii, first, second, expectation, '+');     \
+#define CHECK_ADD_ASCII(first, second, expectation) {           \
+    __verify(add_ascii, first, second, expectation, '+');       \
 }
 
-extern void verify(rm_func func, char* first, char* second, \
-    char* expected, char opr);
+#define CHECK_RM_NUMERAL(first, expectation) {                  \
+    __verifyconv(rm_conv_llong, first, expectation);            \
+}
 
-extern void __verify(addascii func, char* first, char* second, \
-    char* expected, char opr);
+/* verification function wrappers */
+extern void verify(rm_func func, char* first, char* second, char* expected, char opr);
+extern void __verify(addascii func, char* first, char* second, char* expected, char opr);
+extern void __verifyconv(rmconv func, char* first, long long expected);
 
 extern TCase* tc_adds();
 extern TCase* tc_subs();
-extern TCase* tc_adds_ascii();
+extern TCase* tc_utils();
 
 #endif

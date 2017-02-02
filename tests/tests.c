@@ -35,3 +35,9 @@ void __verify(addascii func, char* first, char* second, \
         "%s %c %s = %s, but got %s", first, opr, second, expected, val);
     free(val);
 }
+
+void __verifyconv(rmconv func, char* first, long long expected) {
+    long long val = func(first);
+    ck_assert_msg( expected == val,
+        "%s = %lld, but got %lld", first, expected, val);
+}

@@ -34,7 +34,7 @@ examples: examples/rmadd.c examples/rmsub.c
 	gcc -g examples/rmsub.c -L. -lrc -I ./src/headers/ -o obj/rmsub
 
 test:
-	gcc tests/runtests.c tests/tests.c tests/check_sub.c tests/check_add.c tests/check_add_ascii.c -o obj/tcases $(CFLAGS) -L. -lrc -lcheck
+	gcc tests/runtests.c tests/tests.c tests/check_sub.c tests/check_add.c tests/check_utils.c -o obj/tcases $(CFLAGS) -L. -lrc -lcheck
 
 run: test
 	obj/tcases
