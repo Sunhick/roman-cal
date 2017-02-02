@@ -12,9 +12,6 @@
 
 #include "headers/rmconv.h"
 
-#define INVALID     -999
-#define CHR_LIMIT   10
-
 int convert(char c) {
     switch(c) {
         case 'I':
@@ -188,4 +185,89 @@ char* rm_conv_numeric(char* roman) {
         }
     }
     return NULL;
+}
+
+/* Convert ascii number to roman numerals */
+char* rm_ascii_conv(char* number) {
+    return NULL;
+}
+
+/* Convert number to a roman numerals */
+char* rm_llong_conv(long long number) {
+    char* roman = (char*)malloc(sizeof(char)*CHR_LIMIT);
+    char* temp = roman;
+    
+    while(number >= 1000) {
+        number -= 1000;
+        *temp++ = 'M';
+    }
+    
+    while(number >= 500) {
+        if(number >= 900) {
+            *temp++ = 'C';
+            *temp++ = 'M';
+            number -= 900;
+        } else {
+            number -= 500;
+            *temp++ = 'D';
+        }
+    }
+    
+    while(number >= 100) {
+        if(number >= 400) {
+            *temp++ = 'C';
+            *temp++ = 'D';
+            number -= 400;
+        } else {
+            number -= 100;
+            *temp++ = 'C';
+        }
+    }
+    
+    while(number >= 50) {
+        if(number >= 90) {
+            *temp++ = 'X';
+            *temp++ = 'C';
+            number -= 90;
+        } else {
+            number -= 50;
+            *temp++ = 'L';
+        }
+    }
+    
+    while(number >= 10) {
+        if(number >= 40) {
+            *temp++ = 'X';
+            *temp++ = 'L';
+            number -= 40;
+        } else {
+            number -= 10;
+            *temp++ = 'X';
+        }
+    }
+    
+    while(number >= 5) {
+        if(number >= 9) {
+            *temp++ = 'I';
+            *temp++ = 'X';
+            number -= 9;
+        } else {
+            number -= 5;
+            *temp++ = 'V';
+        }
+    }
+    
+    while(number >= 1) {
+        if(number >= 4) {
+            *temp++ = 'I';
+            *temp++ = 'V';
+            number -= 4;
+        } else {
+            *temp++ = 'I';
+            number--;
+        }
+    }
+    
+    *temp = '\0';
+    return roman;
 }

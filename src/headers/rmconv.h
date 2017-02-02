@@ -9,6 +9,9 @@
 #ifndef RM_CONV_H
 #define RM_CONV_H
 
+#define INVALID     -999
+#define CHR_LIMIT   10
+
 /* convert roman to integer */
 int rm_conv_int(char* roman);
 
@@ -22,6 +25,13 @@ long long rm_conv_llong(char* roman);
     This returns ASCII numeric number. eg: "45667678" */
 char* rm_conv_numeric(char* roman);
 
+/* Convert number to a roman numerals */
+char* rm_llong_conv(long long number);
+
+/* Convert ascii number to roman numerals */
+char* rm_ascii_conv(char* number);
+
+/* add the string numbers */
 char* add_ascii(char* first, char* second);
 
 #endif

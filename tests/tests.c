@@ -41,3 +41,9 @@ void __verifyconv(rmconv func, char* first, long long expected) {
     ck_assert_msg( expected == val,
         "%s = %lld, but got %lld", first, expected, val);
 }
+
+void __verifyllconv(rmllconv func, long long first, char* expected) {
+    char* val = func(first);
+    ck_assert_msg( strcmp(expected, val) == 0,
+        "%lld = %s, but got %s", first, expected, val);
+}

@@ -17,27 +17,45 @@
 struct rm_result* rm_add(char* first, char* second) {
     struct rm_result* result = malloc(sizeof(struct rm_result));
     
-    char* fnumber = rm_conv_numeric(first);
-    if(!fnumber) {
+    long long fnumber = rm_conv_llong(first);
+    if(fnumber == INVALID) {
         result->errcode = ERROR;
         result->err_message = "First number is invalid roman!";
         return result;
     }
 
-    char* snumber = rm_conv_numeric(second);
-    if(!snumber) {
+    long long snumber = rm_conv_llong(second);
+    if(snumber == INVALID) {
         result->errcode = ERROR;
         result->err_message = "Second number is invalid roman!";
         return result;
     }
 
-    // char* answer = rm_add_ascii(first, second);
-    // result->value = answer;
+    long long answer = fnumber + snumber;
+    result->value = rm_llong_conv(answer);
     return result;
 }
 
 /* rm_sub() returns rm_result that holds absolute difference of two numbers
     or error description with code.*/
 struct rm_result* rm_sub(char* first, char* second) {
-    return NULL;
+    struct rm_result* result = malloc(sizeof(struct rm_result));
+    
+    long long fnumber = rm_conv_llong(first);
+    if(fnumber == INVALID) {
+        result->errcode = ERROR;
+        result->err_message = "First number is invalid roman!";
+        return result;
+    }
+
+    long long snumber = rm_conv_llong(second);
+    if(snumber == INVALID) {
+        result->errcode = ERROR;
+        result->err_message = "Second number is invalid roman!";
+        return result;
+    }
+
+    long long answer = llabs(fnumber - snumber);
+    result->value = rm_llong_conv(answer);
+    return result;
 }
