@@ -20,14 +20,16 @@ struct rm_result* rm_add(char* first, char* second) {
     long long fnumber = rm_conv_llong(first);
     if(fnumber == INVALID) {
         result->errcode = ERROR;
-        result->err_message = "First number is invalid roman!";
+        result->err_message = (char*)malloc(sizeof(char)*20);
+        sprintf(result->err_message, "%s is invalid roman!", first);
         return result;
     }
 
     long long snumber = rm_conv_llong(second);
     if(snumber == INVALID) {
         result->errcode = ERROR;
-        result->err_message = "Second number is invalid roman!";
+        result->err_message = (char*)malloc(sizeof(char)*20);
+        sprintf(result->err_message, "%s is invalid roman!", second);
         return result;
     }
 
@@ -44,14 +46,16 @@ struct rm_result* rm_sub(char* first, char* second) {
     long long fnumber = rm_conv_llong(first);
     if(fnumber == INVALID) {
         result->errcode = ERROR;
-        result->err_message = "First number is invalid roman!";
+        result->err_message = (char*)malloc(sizeof(char)*20);
+         sprintf(result->err_message, "%s is invalid roman!", first);
         return result;
     }
 
     long long snumber = rm_conv_llong(second);
     if(snumber == INVALID) {
         result->errcode = ERROR;
-        result->err_message = "Second number is invalid roman!";
+        result->err_message = (char*)malloc(sizeof(char)*20);
+        sprintf(result->err_message, "%s is invalid roman!", second);
         return result;
     }
 
